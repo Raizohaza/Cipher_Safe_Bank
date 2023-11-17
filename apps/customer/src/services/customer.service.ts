@@ -20,6 +20,25 @@ export class CustomerService {
     private readonly configService: ConfigService
   ) {}
 
+  public async createDefaultAdminCustomerIfNotExists() {
+    const adminCustomer = await this.customerModel.findOne({ type: 'admin' });
+
+    if (!adminCustomer) {
+      const defaultAdminCustomer: ICustomer = new this.customerModel({
+        email: 'admin@cfbank.com',
+        password: 'test11',
+        name: 'admin',
+        type: 'admin',
+        is_confirmed: true, 
+      });
+
+      await this.createCustomer(defaultAdminCustomer);
+      console.log('Default admin customer created successfully');
+    } else {
+      console.log('Admin customer already exists. Skipping creation.');
+    }
+  }
+
   public async searchCustomer(params: { email: string }): Promise<ICustomer[]> {
     return this.customerModel.find(params).exec();
   }

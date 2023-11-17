@@ -8,7 +8,7 @@ export class MongoConfigService implements MongooseOptionsFactory {
     return {
       uri:
         process.env.MONGO_DSN ||
-        'mongodb+srv://web100:zzz456zzz@cluster0.pvkop.mongodb.net/?retryWrites=true&w=majority',
+        'mongodb+srv://web100:zzz456zzz@cluster0.pvkop.mongodb.net/ciphersafebank?retryWrites=true&w=majority',
     };
   }
 }

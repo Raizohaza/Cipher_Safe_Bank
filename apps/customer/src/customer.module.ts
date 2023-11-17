@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { ClientProxyFactory } from '@nestjs/microservices';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CustomerController } from './customer.controller';
@@ -45,4 +45,9 @@ import { UtilsModule } from '@i-bank/utils';
     },
   ],
 })
-export class CustomerModule {}
+export class CustomerModule implements OnModuleInit {
+  constructor(private readonly customerService: CustomerService) {}
+  async onModuleInit() {
+    await this.customerService.createDefaultAdminCustomerIfNotExists();
+  }
+}

@@ -48,6 +48,8 @@ import { IServiceCustomerConfirmResponse } from './service-customer-confirm-resp
 import { IServiceCustomerCreateResponse } from './service-customer-create-response.interface';
 import { IServiceCustomerGetByIdResponse } from './service-customer-get-by-id-response.interface';
 import { IServiceCustomerSearchResponse } from './service-customer-search-response.interface';
+import { Roles } from '../../decorators/roles.decorator';
+import { Role } from '../../enums/role.enum';
 
 @ApiBearerAuth()
 @Controller('customer')
@@ -111,8 +113,8 @@ export class CustomerController {
     // return this.authService.refreshTokens(userId, refreshToken);
   }
   @Post()
-  // @Authorization(true)
-  // @Roles(Role.Admin, Role.Employee)
+  @Authorization(true)
+  @Roles(Role.Admin, Role.Employee)
   @ApiCreatedResponse({
     type: CreateCustomerResponseDto,
   })

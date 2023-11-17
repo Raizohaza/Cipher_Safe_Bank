@@ -175,9 +175,9 @@ export class CustomerController {
           const mail = {
             to: createdCustomer.email,
             subject: 'Email confirmation',
-            from: 'laptrinhweb100@gmail.com',
+            from: 'toanphamhcmus@gmail.com',
             html: `<center>
-            <b>Hi ${createdCustomer.name}, please confirm your email to use iBank.</b>
+            <b>Hi ${createdCustomer.name}, please confirm your email to use.</b>
             <br>
             Use the following link for this.
             <br>
