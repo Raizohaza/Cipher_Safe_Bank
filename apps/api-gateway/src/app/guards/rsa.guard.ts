@@ -29,7 +29,7 @@ export class RsaGuard implements CanActivate {
     const verifyData = Buffer.from(data.toString('utf-8'));
     const abineSign = request.body.sign;
     const sign = Buffer.from(request.body.sign, 'base64');
-    const fetchData = await fetch(HOME + '/public.pem');
+    const fetchData = await fetch(HOME + '/linking-banks/public.pem');
     const publicKey: KeyLike = await fetchData.text();
     const bfPublicKey: Buffer = Buffer.from(publicKey.toString());
 
