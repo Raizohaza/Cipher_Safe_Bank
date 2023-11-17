@@ -106,7 +106,6 @@ export class LinkingBanksController {
     @Req() req
   ) {
     const HOME = 'https://backend-bank-raizohaza.cloud.okteto.net';
-    // const HOME = ' https://3713-2001-ee0-d789-5790-4489-dd18-2b2f-ae09.ngrok-free.app';
     const SECRET_KEY = this.config.get('X_SECRET');
 
     const TRANSFER = '/linking-banks/external/transfer/in';
@@ -159,7 +158,7 @@ export class LinkingBanksController {
     });
     console.log(res);
 
-    const remoteRequest = res.json();
+    const remoteRequest = res.text();
     const response = new BaseReponse();
     response.data = {
       newTrans,

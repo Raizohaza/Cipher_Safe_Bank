@@ -46,7 +46,7 @@ export const TransactionSchema = new mongoose.Schema<
     registerDay: Date,
     bank: {
       type: String,
-      default: 'iBank',
+      default: 'CipherSafe',
     },
     sign: {
       type: String,

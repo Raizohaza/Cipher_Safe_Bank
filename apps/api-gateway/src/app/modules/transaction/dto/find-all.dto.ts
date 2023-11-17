@@ -3,8 +3,8 @@ import * as moment from 'moment';
 export class FindAllDTO {
   @ApiProperty({
     required: false,
-    default: 'iBank',
-    enum: ['iBank', 'Abine'],
+    default: 'CipherSafe',
+    enum: ['iBank', 'Abine', 'CipherSafe'],
   })
   bank: string;
 

@@ -43,9 +43,8 @@ export class RsaGuard implements CanActivate {
     const decryptedData = JSON.parse(data.toString());
 
     request.body = decryptedData;
-    request.abineSign = abineSign;
     request.body.sign = abineSign;
-    console.log(request.body);
+    console.log('Verified successfully!', request.body);
 
     return true;
   }

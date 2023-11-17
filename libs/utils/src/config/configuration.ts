@@ -4,12 +4,11 @@ export class ConfigService {
   private readonly envConfig: { [key: string]: unknown } = null;
   constructor() {
     this.envConfig = {};
-    // this.envConfig.port = parseInt(process.env.PORT, 10) || 3000;
     this.envConfig['X_SECRET'] = process.env['X_SECRET'] || 'abc';
     this.envConfig.SECRET_KEY = process.env.SECRET_KEY || 'SECRET_KEY';
     this.envConfig.SENDGRID_API_KEY =
       process.env.SENDGRID_API_KEY ||
-      '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';
+      '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';
     this.envConfig.customerService = {
       transport: Transport.TCP,
       options: {
