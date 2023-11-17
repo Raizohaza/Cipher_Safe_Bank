@@ -71,16 +71,6 @@ export class LinkingBanksController {
   @ApiHeader({ name: 'x-api-key' })
   @ApiHeader({ name: 'x-time' })
   @BasicAuthorization(true)
-  findOne(@Param('accountNum') accountNum: string) {
-    return lastValueFrom(
-      this.linkingBanksService.send('remoteFindByAccountNumber', accountNum)
-    );
-  }
-
-  @Post('transfer/:accountNum')
-  @ApiHeader({ name: 'x-api-key' })
-  @ApiHeader({ name: 'x-time' })
-  @BasicAuthorization(true)
   async tranferToLinkedBank(@Param('accountNum') accountNum: string) {
     return await lastValueFrom(
       this.linkingBanksService.send('remoteFindByAccountNumber', accountNum)
@@ -252,8 +242,6 @@ export class LinkingBanksController {
   @BasicAuthorization(true)
   @Verify(true)
   async transferExternalIn(@Body() tranferDTO: CreateTransactionAbineDto) {
-    tranferDTO.fromAccountNumber = tranferDTO.fromAccount;
-    tranferDTO.toAccountNumber = tranferDTO.toAccount;
     const data = await lastValueFrom(
       this.transactionService.send('createTransactionAbine', tranferDTO)
     );

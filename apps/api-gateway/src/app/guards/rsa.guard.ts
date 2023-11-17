@@ -20,7 +20,7 @@ export class RsaGuard implements CanActivate {
     if (!verify) {
       return true;
     }
-    const HOME = 'https://abine.fly.dev';
+    const HOME = 'https://backend-bank-raizohaza.cloud.okteto.net';
     const request = context.switchToHttp().getRequest();
     const data = decrypt(request.body.encrypted);
     if (!data) {
@@ -44,6 +44,7 @@ export class RsaGuard implements CanActivate {
 
     request.body = decryptedData;
     request.abineSign = abineSign;
+    request.body.sign = abineSign;
     console.log(request.body);
 
     return true;
